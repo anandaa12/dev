@@ -1,0 +1,26 @@
+## All that sweet sweet fzf
+
+export XDG_CONFIG_HOME=$HOME/.config
+
+VIM="nvim"
+DEV_ENV=$HOME/dev
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+
+addToPathFront(){
+	if [[ ! -z "$2" ]] || [[ "$PATH" != *"$1"* ]]; then
+		export PATH=$1:$PATH
+	fi
+}
+addToPath() {
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+
+addToPathFront $HOME/.local/scripts
+addToPathFront $HOME/.local/zig true
