@@ -1,11 +1,10 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 
+vim.opt.title = true 
 -- Make line numbers default
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -14,7 +13,7 @@ vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
-vim.opt.showmode = false
+-- vim.opt.showmode = false
 
 -- Enable break indent
 vim.opt.smartindent = true
@@ -30,6 +29,7 @@ vim.opt.smartcase = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.termguicolors = true
+--vim.o.syntax = "on"
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
@@ -38,3 +38,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
+vim.o.timeoutlen = 500
+
+
+
+

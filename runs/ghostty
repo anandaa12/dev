@@ -4,15 +4,22 @@ sudo apt update
 sudo apt install llvm lld llvm-dev liblld-dev clang libclang-dev libglib2.0-dev libgtk-4-dev libadwaita-1-dev git
 
 sudo apt install libgtk-4-dev libadwaita-1-dev git blueprint-compiler gettext
+snap install ghostty --edge --classic
 
-wget https://ziglang.org/download/0.14.0/zig-linux-x86_64-0.14.0.tar.xz -O /tmp/zig.tar.xz
+#if [[ ! -d "$HOME/.local/zig" ]]; then
+#	mkdir -p "$HOME/.local/zig"
+#fi
+#wget https://ziglang.org/download/0.14.0/zig-linux-x86_64-0.14.0.tar.xz -O $HOME/.local/zig/zig-linux.tar.xz
 
-tar -xvf /tmp/zig.tar.xz -C $HOME/.local
-export PATH="$HOME/.local/zig-linux-x86_64-0.14.0:$PATH"
+#tar -xvf $HOME/.local/zig/zig-linux.tar.xz -C $HOME/.local/zig
+#cp $HOME/.local/zig/zig-linux/zig $HOME/.local/zig
 
-git clone https://github.com/ghostty-org/ghostty.git $HOME/personal/ghostty
+#ln -s $HOME/.local/zig/zig-linux-x86_64-0.14.0/zig $HOME/.local/zig/zig
+#export PATH="$HOME/.local/zig-linux-x86_64-0.14.0:$PATH"
 
-(
-cd $HOME/personal/ghostty
-zig build -p $HOME/.local -Doptimize=ReleaseFast
-)
+#git clone https://github.com/ghostty-org/ghostty.git $HOME/personal/ghostty
+
+#(
+#cd $HOME/personal/ghostty
+#zig build -p $HOME/.local -Doptimize=ReleaseFast
+#)

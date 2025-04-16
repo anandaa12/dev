@@ -24,3 +24,4 @@ addToPath() {
 
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/zig true
+eval "$(zoxide init zsh)"
