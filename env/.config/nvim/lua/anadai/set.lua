@@ -40,6 +40,8 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.o.timeoutlen = 500
 
-
+vim.opt.tabstop = 4        -- number of visual spaces per TAB
+vim.opt.shiftwidth = 4     -- number of spaces for each indent
+vim.opt.expandtab = true   -- use spaces instead of tabs
 
 
