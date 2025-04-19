@@ -1,23 +1,20 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"stevearc/conform.nvim",
-		"williamboman/mason.nvim",
+        "williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/nvim-cmp",
+        "stevearc/conform.nvim",
 		--   "L3MON4D3/LuaSnip",
 		--  "saadparwaiz1/cmp_luasnip",
 		-- "j-hui/fidget.nvim",
 	},
 	config = function()
-		require("conform").setup({
-			formatters_by_ft = {
-			}
-		})
+		require("conform").setup({})
 
 		vim.api.nvim_create_user_command("Format", function(args)
 			local range = nil
@@ -39,6 +36,7 @@ return {
 			vim.lsp.protocol.make_client_capabilities(),
 			cmp_lsp.default_capabilities()
 		)
+
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
@@ -46,6 +44,7 @@ return {
 				"rust_analyzer",
 				"ts_ls",
 				"pylsp",
+                "pyright"
 			},
 			handlers = {
 				function(server_name) -- default handler (optional)
@@ -72,6 +71,23 @@ return {
 						}
 					}
 				end,
+                ['pyright'] = function()
+                    local lspconfig = require("lspconfig")
+                    local path = require("lspconfig/util").path
+                    lspconfig.pyright.setup({
+                        on_attach = on_attach,
+                        capabilities = capabilities,
+                        before_init = function (_, config)
+                            local cwd = vim.fn.getcwd()
+                            if vim.fn.isdirectory(path.join(cwd, 'venv')) ~= 1 then
+                                cwd = cwd .. "/backend"
+                            end
+                            default_venv_path = path.join(cwd, "venv", "bin", "python")
+                            config.settings.python.pythonPath = default_venv_path
+                        end,
+                        filetype = {"python"}
+                    })
+                end
 			}
 		})
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
