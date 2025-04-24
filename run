@@ -5,6 +5,9 @@ filter="$1"
 dry="0"
 
 
+# Create directory if it doesn't exist
+mkdir -p "$HOME/personal/packages"
+
 echo "$script_dir -- $filter"
 
 cd $script_dir

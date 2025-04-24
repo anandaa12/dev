@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
+
+# Install prerequisites
 sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
+
+# Create directory if it doesn't exist
+mkdir -p "$HOME/personal/packages"
+
+# Clone yay repository
+git clone https://aur.archlinux.org/yay.git "$HOME/personal/packages/yay"
+
+# Navigate to the cloned repository
+cd "$HOME/personal/packages/yay" || exit
+
+# Build and install the package
 makepkg -si

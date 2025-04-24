@@ -3,7 +3,7 @@
 export XDG_CONFIG_HOME=$HOME/.config
 
 VIM="nvim"
-DEV_ENV=$HOME/dev
+DEV_ENV=$HOME/personal/dev
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -23,10 +23,9 @@ addToPath() {
 
 
 addToPathFront $HOME/.local/scripts
-addToPathFront /snap/bin/yazi
 addToPathFront $HOME/.local/zig true
 eval "$(zoxide init zsh)"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

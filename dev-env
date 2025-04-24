@@ -73,7 +73,7 @@ copy_file() {
 
 echo "$XDG_CONFIG_HOME"
 echo "dev-env path:$DEV_ENV"
-DEV_ENV=$HOME/dev
+DEV_ENV=$HOME/personal/dev
 echo $DEV_ENV
 copy_dir $DEV_ENV/env/.config $XDG_CONFIG_HOME
 copy_dir $DEV_ENV/env/.local $HOME/.local

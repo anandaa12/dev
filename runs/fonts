@@ -1,0 +1,4 @@
+#!/usr/env/bin bash
+
+
+sudo pacman -S noto-fonts-emoji
