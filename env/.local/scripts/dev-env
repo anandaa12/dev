@@ -3,7 +3,7 @@
 
 
 (
-cd $HOME/dev
+cd $HOME/personal/dev
 ./dev-env
 hash -r
 )
