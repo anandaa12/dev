@@ -11,10 +11,13 @@ general {
         colors = true
         interval = 5
 }
-
-order += "disk /"
+order += "wireless _first_"
+order += "ethernet _first_"
+# order += "disk /"
 order += "battery all"
-order += "load"
+# order += "run_watch KEYBOARD"
+# order += "load"
+order += "volume master"
 order += "tztime local"
 
 battery all {
@@ -26,17 +29,32 @@ tztime local {
        timezone = "Asia/Ulaanbaatar"
 }
 
-# time {
-#     format = "%Y-%m-%d %H:%M:%S"
-#     timezone = "Asia/Ulaanbaatar"
+
+# load {
+#         format = "%1min"
 # }
 
-load {
-        format = "%1min"
+# disk "/" {
+#         format = "%avail"
+# }
+#
+# run_watch KEYBOARD {
+#     format = "%title: %status"
+#     command = "xset -q | grep LED | awk '{print $10}' | sed 's/..$//' | sed 's/^0/us/' | sed 's/^1/ru/'"
+# }
+wireless _first_ {
+    format_up = "W: %ip"
+    format_down = "W: down"
 }
 
-disk "/" {
-        format = "%avail"
+ethernet _first_ {
+    format_up = "E: %ip"
+    format_down = "E: down"
 }
-
-
+volume master {
+    format = "♪: %volume"
+    format_muted = "♪: muted (%volume)"
+    device = "default"
+    mixer = "Master"
+    mixer_idx = 0
+}
