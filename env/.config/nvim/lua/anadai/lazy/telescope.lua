@@ -21,7 +21,7 @@ return {
 			vim.keymap.set("n", "<leader>fc", ":Telescope colorschema<CR>", {})
 
 			vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
-			vim.keymap.set("n", "<leader>fp", builtin.oldfiles, {})
+			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
 		end,
 	},
 	{
@@ -29,10 +29,10 @@ return {
 		--   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
 		config = function()
 
-			vim.keymap.set("n", "<leader>ffb", function()
+			vim.keymap.set("n", "<leader>fj", function()
 				require("telescope").extensions.file_browser
 				    .file_browser({
-					    initial_mode = "normal",
+					    -- initial_mode = "normal",
   path = "%:p:h",  -- Use the directory of the current file
                 respect_gitignore = false,
                 hidden = true,

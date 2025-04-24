@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Installing PostgreSQL and PostGIS..."
+
+# Install PostgreSQL
+sudo pacman -Sy --noconfirm postgresql
+
+# Initialize the database cluster
+sudo -iu postgres initdb -D /var/lib/postgres/data
+
+# Enable and start PostgreSQL service
+sudo systemctl enable postgresql
+sudo systemctl start postgresql
+
+# Set the postgres user password to '123'
+sudo -iu postgres psql -c "ALTER USER postgres PASSWORD '123';"
+
+# Install PostGIS and dependencies
+sudo pacman -Sy --noconfirm postgis gdal proj
+
+echo "PostgreSQL and PostGIS installation complete."
+echo "Postgres user password is set to '123'."
+
