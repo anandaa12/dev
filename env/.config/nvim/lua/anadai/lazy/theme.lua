@@ -26,7 +26,7 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		config = function()
-			vim.cmd("colorscheme base16-onedark")
+			vim.cmd("colorscheme base16-nord")
 		end,
 	},
 	{
