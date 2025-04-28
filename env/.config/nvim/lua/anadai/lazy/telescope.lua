@@ -18,7 +18,7 @@ return {
 			vim.keymap.set("n", "<leader>ws", builtin.lsp_workspace_symbols, {})
 
 			vim.keymap.set("n", "<leader>fz", ":Telescope zoxide list<CR>", {})
-			vim.keymap.set("n", "<leader>fc", ":Telescope colorschema<CR>", {})
+			-- vim.keymap.set("n", "<leader>fc", ":Telescope colorschema<CR>", {})
 
 			vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
 			vim.keymap.set("n", "<leader>fo", builtin.oldfiles, {})
@@ -41,9 +41,11 @@ return {
 
 			end)
 
-			vim.keymap.set("n", "<leader>ffc", function()
+			vim.keymap.set("n", "<leader>fc", function()
 				require("telescope").extensions.file_browser
-				    .file_browser({initial_mode = "normal"})
+				    .file_browser({
+                        -- initial_mode = "normal"
+                    })
 
 			end)
 
