@@ -29,7 +29,7 @@ vim.opt.smartcase = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.termguicolors = true
---vim.o.syntax = "on"
+vim.o.syntax = "on"
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"

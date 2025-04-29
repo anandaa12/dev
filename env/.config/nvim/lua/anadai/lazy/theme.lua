@@ -1,85 +1,223 @@
 return {
-	{
-		"blazkowolf/gruber-darker.nvim",
-		opts = {
-			bold = false,
-		},
-	},
-	{
-		"zenbones-theme/zenbones.nvim",
-		dependencies = "rktjmp/lush.nvim",
-		lazy = false,
-		priority = 1000,
-	},
-	{ "ellisonleao/gruvbox.nvim" },
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-	},
-	{
-		"tjdevries/colorbuddy.nvim",
-	},
-	{
-		"gmr458/cold.nvim",
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		config = function()
-			vim.cmd("colorscheme base16-nord")
-		end,
-	},
-	{
-		"vague2k/vague.nvim",
-		config = function()
-			require("vague").setup({
-				-- optional configuration here
-				-- transparent = true,
-				style = {
-					-- "none" is the same thing as default. But "italic" and "bold" are also valid options
-					boolean = "none",
-					number = "none",
-					float = "none",
-					error = "none",
-					comments = "none",
-					conditionals = "none",
-					functions = "none",
-					headings = "bold",
-					operators = "none",
-					strings = "none",
-					variables = "none",
+    {
+        'neanias/everforest-nvim',
+        priority = 1000,
+    },
+    -- Kanagawa
+    {
+        "rebelot/kanagawa.nvim",
+        priority = 1000,
+        config = function()
+            require('kanagawa').setup({
+                -- compile = false, -- enable compiling the colorscheme
+                -- undercurl = true, -- enable undercurls
+                -- commentStyle = { italic = true },
+                -- functionStyle = {},
+                -- keywordStyle = { italic = true },
+                -- statementStyle = { bold = true },
+                -- typeStyle = {},
+                -- transparent = false, -- do not set background color
+                -- dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+                -- terminalColors = true, -- define vim.g.terminal_color_{0,17}
+                -- colors = { -- add/modify theme and palette colors
+                --     palette = {},
+                --     theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
+                -- },
+                -- overrides = function(colors) -- add/modify highlights
+                --     return {}
+                -- end,
+                -- theme = "wave", -- Load "wave" theme
+                -- background = { -- map the value of 'background' option to a theme
+                --     dark = "wave", -- try "dragon" !
+                --     light = "lotus"
+                -- },
+            })
+        end
+    },
 
-					-- keywords
-					keywords = "none",
-					keyword_return = "none",
-					keywords_loop = "none",
-					keywords_label = "none",
-					keywords_exception = "none",
+    -- Gruber Darker
+    {
+        "blazkowolf/gruber-darker.nvim",
+        opts = {
+            bold = false,
+        },
+    },
 
-					-- builtin
-					builtin_constants = "none",
-					builtin_functions = "none",
-					builtin_types = "none",
-					builtin_variables = "none",
-				},
-				colors = {
-					-- func = "#bc96b0",
-					-- keyword = "#787bab",
-					-- -- string = "#d4bd98",
-					-- string = "#8a739a",
-					-- -- string = "#f2e6ff",
-					-- -- number = "#f2e6ff",
-					-- -- string = "#d8d5b1",
-					-- number = "#8f729e",
-					-- -- type = "#dcaed7",
-				},
-			})
-		end,
-	},
-	{
-		"jnurmine/Zenburn",
-	},
-	{
-		"RRethy/base16-nvim",
-	},
+    -- Zenbones
+    {
+        "zenbones-theme/zenbones.nvim",
+        dependencies = "rktjmp/lush.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+
+    -- Gruvbox
+    {
+        "ellisonleao/gruvbox.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+
+    -- Rose Pine
+    {
+        "rose-pine/neovim",
+        name = "rose-pine",
+        -- lazy = false,
+        -- priority = 1000,
+        config = function()
+            -- require('rose-pine').setup({
+            --     -- Your rose-pine config here
+            --     variant = 'moon', -- 'auto', 'main', 'moon', or 'dawn'
+            --     dark_variant = 'moon',
+            -- })
+        end,
+    },
+
+    -- Colorbuddy (dependency for some themes)
+    {
+        "tjdevries/colorbuddy.nvim",
+    },
+
+    -- Cold
+    {
+        "gmr458/cold.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+
+    -- Monaspace - Font and possibly theme
+    {
+        "jackplus-xyz/monaspace.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+
+    -- Vague theme
+    {
+        "vague2k/vague.nvim",
+        lazy = false,
+        priority = 1000,
+        -- Your commented-out config left intact for later use
+    },
+
+    -- Zenburn
+    {
+        "jnurmine/Zenburn",
+        lazy = false,
+        priority = 1000,
+    },
+
+    -- Base16
+    {
+        "RRethy/base16-nvim",
+        lazy = false,
+        priority = 1000,
+    },
+    -- Onedark
+    -- {
+    --     "olimorris/onedarkpro.nvim",
+    --     priority = 1000, -- Ensure it loads first
+    --     config = function()
+    --         -- require("onedark").setup()
+    --         vim.cmd([[colorscheme onedark]])
+    --     end,
+    -- },
+    {
+        'navarasu/onedark.nvim',
+        lazy = false,
+        priority = 1000,
+        config = function()
+            -- require('onedark').setup({
+            --     style = 'dark', -- Options: dark, darker, cool, deep, warm, warmer
+            --     transparent = false,
+            --     term_colors = true,
+            --     code_style = {
+            --         comments = 'italic',
+            --         keywords = 'none',
+            --         functions = 'none',
+            --         strings = 'none',
+            --         variables = 'none'
+            --     },
+            -- })
+            require("onedark").setup()
+        end,
+    },
+
+    -- Dracula
+    {
+        "Mofiqul/dracula.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("dracula").setup({
+                transparent_bg = false,
+                italic_comment = true,
+            })
+        end,
+    },
+
+    -- Nord
+    {
+        "shaunsingh/nord.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+
+    -- Tokyo Night
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        -- config = function()
+        --     require("tokyonight").setup({
+        --         style = "storm", -- storm, moon, night, day
+        --         transparent = false,
+        --         terminal_colors = true,
+        --         styles = {
+        --             comments = { italic = true },
+        --             keywords = { italic = false },
+        --             functions = {},
+        --             variables = {},
+        --         },
+        --     })
+        -- end,
+    },
+
+    -- Nightfox (includes multiple themes: nightfox, nordfox, dayfox, etc.)
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("nightfox").setup({
+                -- options = {
+                --     transparent = false,
+                --     styles = {
+                --         comments = "italic",
+                --         keywords = "bold",
+                --         types = "italic,bold",
+                --     }
+                -- }
+            })
+            vim.cmd([[colorscheme nordfox]])
+        end,
+    },
+
+    -- Material
+    {
+        "marko-cerovac/material.nvim",
+        lazy = false,
+        priority = 1000,
+        -- config = function()
+        --     vim.g.material_style = "deep ocean" -- deep ocean, oceanic, palenight, lighter, darker
+        -- end,
+    },
+
+    -- Solarized
+    {
+        "shaunsingh/solarized.nvim",
+        lazy = false,
+        priority = 1000,
+    },
+
 }
