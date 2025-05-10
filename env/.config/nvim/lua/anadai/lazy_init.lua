@@ -27,4 +27,5 @@ require('lazy').setup({
     require 'anadai.lazy.theme',
     require 'anadai.lazy.comments',
     require 'anadai.lazy.yazi',
+    require 'anadai.lazy.harpoon',
 })
