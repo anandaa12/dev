@@ -7,6 +7,9 @@ git clone -b v0.10.4 https://github.com/neovim/neovim.git "$HOME/personal/packag
 sudo pacman -S --needed base-devel cmake gettext lua51 lua51-lpeg lua51-mpack lua51-bitop
 sudo pacman -S lua luarocks
 
+# Create directory if it doesn't exist
+mkdir -p "$HOME/personal/neovim"
+
 # Navigate to the project directory
 cd "$HOME/personal/neovim"
 
