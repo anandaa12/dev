@@ -20,7 +20,7 @@ return {
                 'json',
                 'java',
                 'groovy',
-                'go',
+                "gomod", "gowork", "gosum", "go",
                 'gitignore',
                 'graphql',
                 'yaml',
