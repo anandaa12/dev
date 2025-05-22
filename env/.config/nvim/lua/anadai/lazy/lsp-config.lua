@@ -45,7 +45,7 @@ return {
                 "rust_analyzer",
                 "ts_ls",
                 "pylsp",
-                'primsals',
+                -- 'primsals',
                 "pyright"
             },
             handlers = {
