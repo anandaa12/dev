@@ -1,0 +1,7 @@
+!#/usr/bin/env bash
+
+sudo pacman -S docker
+# add current user to docker group.
+sudo usermod -aG docker $(whoami)
+
+

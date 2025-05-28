@@ -11,14 +11,15 @@ return {
         "stevearc/conform.nvim",
         "L3MON4D3/LuaSnip",
         --  "saadparwaiz1/cmp_luasnip",
+        "saadparwaiz1/cmp_luasnip",
         -- "j-hui/fidget.nvim",
     },
     config = function()
         require("conform").setup({
             formatters_by_ft = {
                 -- lua = { "stylua" },
-                go = { "gofmt" }
-            }
+                go = { "goimports", "gofmt" },
+            },
         })
         vim.api.nvim_create_user_command("Format", function(args)
             local range = nil
@@ -49,8 +50,13 @@ return {
                 "rust_analyzer",
                 "ts_ls",
                 "pylsp",
+<<<<<<< HEAD
                 'primsals',
                 "gopls",
+=======
+                "gopls",
+                -- 'primsals',
+>>>>>>> 68d06eb8692fb631531dd5f86eacb82c01ead94d
                 "pyright"
             },
             handlers = {
