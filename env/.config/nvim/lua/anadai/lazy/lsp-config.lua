@@ -50,13 +50,7 @@ return {
                 "rust_analyzer",
                 "ts_ls",
                 "pylsp",
-<<<<<<< HEAD
-                'primsals',
                 "gopls",
-=======
-                "gopls",
-                -- 'primsals',
->>>>>>> 68d06eb8692fb631531dd5f86eacb82c01ead94d
                 "pyright"
             },
             handlers = {
