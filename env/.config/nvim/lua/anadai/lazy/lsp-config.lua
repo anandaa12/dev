@@ -10,15 +10,15 @@ return {
         "hrsh7th/nvim-cmp",
         "stevearc/conform.nvim",
         "L3MON4D3/LuaSnip",
+        --  "saadparwaiz1/cmp_luasnip",
         "saadparwaiz1/cmp_luasnip",
         -- "j-hui/fidget.nvim",
     },
     config = function()
         require("conform").setup({
             formatters_by_ft = {
+                -- lua = { "stylua" },
                 go = { "goimports", "gofmt" },
-                -- You can also use gopls for formatting
-                -- go = { "gopls" },
             },
         })
         vim.api.nvim_create_user_command("Format", function(args)
@@ -51,7 +51,6 @@ return {
                 "ts_ls",
                 "pylsp",
                 "gopls",
-                -- 'primsals',
                 "pyright"
             },
             handlers = {

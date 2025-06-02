@@ -2,4 +2,4 @@
 
 #apparently it may be one or the other ...
 
-sudo pacman -S --needed i3 i3status i3lock dmenu xterm xorg xorg-xinit
+sudo pacman -S --needed i3 i3status i3lock dmenu xterm xorg xorg-xinit nerd-fonts
