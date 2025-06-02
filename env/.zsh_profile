@@ -2,6 +2,7 @@
 
 export XDG_CONFIG_HOME=$HOME/.config
 export USER=$(whoami)
+export GOPATH=$HOME/.local/go
 
 VIM="nvim"
 DEV_ENV=$HOME/personal/dev
