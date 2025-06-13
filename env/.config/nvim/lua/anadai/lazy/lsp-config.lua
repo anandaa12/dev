@@ -10,17 +10,36 @@ return {
         "hrsh7th/nvim-cmp",
         "stevearc/conform.nvim",
         "L3MON4D3/LuaSnip",
-        --  "saadparwaiz1/cmp_luasnip",
         "saadparwaiz1/cmp_luasnip",
         -- "j-hui/fidget.nvim",
     },
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-                -- lua = { "stylua" },
+                python = { "isort", "black" }, -- isort first, then black (recommended order)
                 go = { "goimports", "gofmt" },
             },
+            formatters = {
+                black = {
+                    prepend_args = {
+                        "--line-length=88",
+                        "--target-version=py311", -- adjust to your Python version
+                    },
+                },
+                isort = {
+                    prepend_args = {
+                        "--profile=black", -- ensures compatibility with black
+                        "--line-length=88",
+                        "--multi-line=3",
+                        "--trailing-comma",
+                        "--force-grid-wrap=0",
+                        "--use-parentheses",
+                        "--ensure-newline-before-comments",
+                    },
+                },
+            },
         })
+
         vim.api.nvim_create_user_command("Format", function(args)
             local range = nil
             if args.count ~= -1 then
@@ -32,6 +51,7 @@ return {
             end
             require("conform").format({ async = true, lsp_format = "fallback", range = range })
         end, { range = true })
+
         vim.keymap.set({ "n", "v" }, "<A-f>", "<cmd>Format<cr>", { desc = "Format code (Conform)", silent = true })
 
         local cmp = require('cmp')
@@ -49,7 +69,7 @@ return {
                 "lua_ls",
                 "rust_analyzer",
                 "ts_ls",
-                "pylsp",
+                "pylsp", -- Keep this as fallback
                 "gopls",
                 "pyright"
             },
@@ -81,22 +101,54 @@ return {
                 ['pyright'] = function()
                     local lspconfig = require("lspconfig")
                     local path = require("lspconfig/util").path
+
+                    -- Simple venv detection for Django projects
+                    local function find_venv_python()
+                        local cwd = vim.fn.getcwd()
+                        local venv_paths = {
+                            path.join(cwd, "venv", "bin", "python"),             -- ./venv/bin/python
+                            path.join(cwd, ".venv", "bin", "python"),            -- ./.venv/bin/python
+                            path.join(cwd, "backend", "venv", "bin", "python"),  -- ./backend/venv/bin/python
+                            path.join(cwd, "backend", ".venv", "bin", "python"), -- ./backend/.venv/bin/python
+                        }
+
+                        for _, python_path in ipairs(venv_paths) do
+                            if vim.fn.executable(python_path) == 1 then
+                                return python_path
+                            end
+                        end
+
+                        -- Fallback to system python
+                        return vim.fn.exepath("python3") or vim.fn.exepath("python") or "python"
+                    end
+
                     lspconfig.pyright.setup({
-                        on_attach = on_attach,
                         capabilities = capabilities,
                         before_init = function(_, config)
-                            local cwd = vim.fn.getcwd()
-                            if vim.fn.isdirectory(path.join(cwd, 'venv')) ~= 1 then
-                                cwd = cwd .. "/backend"
-                            end
-                            default_venv_path = path.join(cwd, "venv", "bin", "python")
-                            config.settings.python.pythonPath = default_venv_path
+                            config.settings.python.pythonPath = find_venv_python()
                         end,
-                        filetype = { "python" }
+                        settings = {
+                            python = {
+                                analysis = {
+                                    extraPaths = { "." },
+                                    autoImportCompletions = true,
+                                    autoSearchPaths = true,
+                                    diagnosticMode = "workspace",
+                                    useLibraryCodeForTypes = true,
+                                    typeCheckingMode = "basic",
+                                },
+                            },
+                        },
+                        root_dir = function(fname)
+                            return require('lspconfig.util').root_pattern('manage.py', 'pyproject.toml',
+                                'requirements.txt', '.git')(fname)
+                        end,
+                        filetypes = { "python" }
                     })
                 end
             }
         })
+
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
