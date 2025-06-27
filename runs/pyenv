@@ -2,3 +2,6 @@
 
 yay -S python311 python312 python313 python310 python38 
 
+sudo pacman -S python-pipx
+pipx install isort
+pipx install black

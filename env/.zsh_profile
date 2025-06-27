@@ -26,6 +26,7 @@ addToPath() {
     fi
 }
 
+export PATH="$HOME/.local/bin:$PATH"
 
 addToPathFront $HOME/.local/scripts
 addToPathFront $HOME/.local/zig true

@@ -54,6 +54,21 @@ return {
 
         vim.keymap.set({ "n", "v" }, "<A-f>", "<cmd>Format<cr>", { desc = "Format code (Conform)", silent = true })
 
+        -- Add commands to check formatter availability
+        vim.api.nvim_create_user_command("FormatCheck", function()
+            local conform = require("conform")
+            local formatters = conform.list_formatters(0)
+            if #formatters == 0 then
+                print("No formatters available for current filetype")
+            else
+                print("Available formatters:")
+                for _, formatter in ipairs(formatters) do
+                    local status = formatter.available and "✓" or "✗"
+                    print(string.format("  %s %s (%s)", status, formatter.name, formatter.command))
+                end
+            end
+        end, { desc = "Check formatter availability" })
+
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
