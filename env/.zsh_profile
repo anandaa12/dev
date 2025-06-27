@@ -29,7 +29,9 @@ addToPath() {
 export PATH="$HOME/.local/bin:$PATH"
 
 addToPathFront $HOME/.local/scripts
-addToPathFront $HOME/.local/zig true
+#addToPathFront $HOME/.local/zig true
+addToPath $HOME/.local/go/bin
+
 eval "$(zoxide init zsh)"
 
 export NVM_DIR="$HOME/.config/nvm"
