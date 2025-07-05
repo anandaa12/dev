@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Clone Neovim v0.10.4
-git clone -b v0.10.4 https://github.com/neovim/neovim.git "$HOME/personal/packages/neovim"
+# Clone Neovim v0.11.2
+git clone -b v0.11.2 https://github.com/neovim/neovim.git "$HOME/personal/packages/neovim"
 
 # Install build dependencies
 sudo pacman -S --needed base-devel cmake gettext lua51 lua51-lpeg lua51-mpack lua51-bitop
