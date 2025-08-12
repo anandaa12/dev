@@ -36,6 +36,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork -i ~/.con
 bindsym $mod+ctrl+l exec --no-startup-id sh -c 'i3lock -i "$HOME/.config/i3/lock-screen.png"'
 #bindsym $mod+Shift+l exec i3lock -i ~/.config/i3/lock-screen.png
 
+exec --no-startup-id sh -c 'feh --bg-scale "$HOME/.config/i3/lock-screen.png"'
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet

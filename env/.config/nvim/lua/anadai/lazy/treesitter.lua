@@ -9,6 +9,7 @@ return {
                 'lua',
                 'python',
                 'javascript',
+                'tsx',
                 'typescript',
                 'vimdoc',
                 'vim',

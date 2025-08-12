@@ -1,4 +1,5 @@
 return {
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
     {
         'neanias/everforest-nvim',
         priority = 1000,
@@ -127,19 +128,19 @@ return {
         lazy = false,
         priority = 1000,
         config = function()
-            -- require('onedark').setup({
-            --     style = 'dark', -- Options: dark, darker, cool, deep, warm, warmer
-            --     transparent = false,
-            --     term_colors = true,
-            --     code_style = {
-            --         comments = 'italic',
-            --         keywords = 'none',
-            --         functions = 'none',
-            --         strings = 'none',
-            --         variables = 'none'
-            --     },
-            -- })
-            require("onedark").setup()
+            require('onedark').setup({
+                style = 'dark', -- Options: dark, darker, cool, deep, warm, warmer
+                transparent = true,
+                term_colors = true,
+                -- code_style = {
+                --     comments = 'italic',
+                --     keywords = 'none',
+                --     functions = 'none',
+                --     strings = 'none',
+                --     variables = 'none'
+                -- },
+            })
+            -- require("onedark").setup()
         end,
     },
 
@@ -161,6 +162,19 @@ return {
         "shaunsingh/nord.nvim",
         lazy = false,
         priority = 1000,
+        config = function()
+            -- Nord theme configuration
+            vim.g.nord_contrast = true              -- Enable contrast for better readability
+            vim.g.nord_borders = true               -- Enable borders around windows/popups
+            vim.g.nord_disable_background = true    -- Transparent background
+            vim.g.nord_italic = true                -- Enable italics for comments and keywords
+            vim.g.nord_uniform_diff_background = true -- Better diff highlighting
+            vim.g.nord_bold = false                 -- Keep bold text minimal
+            vim.g.nord_cursorline_transparent = true -- Transparent cursor line
+            
+            -- Apply the colorscheme
+            -- require('nord').set()
+        end,
     },
 
     -- Tokyo Night
@@ -190,14 +204,14 @@ return {
         priority = 1000,
         config = function()
             require("nightfox").setup({
-                -- options = {
-                --     transparent = false,
-                --     styles = {
-                --         comments = "italic",
-                --         keywords = "bold",
-                --         types = "italic,bold",
-                --     }
-                -- }
+                options = {
+                    transparent = true,
+                    -- styles = {
+                    --     comments = "italic",
+                    --     keywords = "bold",
+                    --     types = "italic,bold",
+                    -- }
+                }
             })
             vim.cmd([[colorscheme nordfox]])
         end,
@@ -208,9 +222,9 @@ return {
         "marko-cerovac/material.nvim",
         lazy = false,
         priority = 1000,
-        -- config = function()
-        --     vim.g.material_style = "deep ocean" -- deep ocean, oceanic, palenight, lighter, darker
-        -- end,
+        config = function()
+            vim.g.material_style = "deep ocean" -- deep ocean, oceanic, palenight, lighter, darker
+        end,
     },
 
     -- Solarized
