@@ -6,7 +6,8 @@ font-size = 10
 # font-family = "FiraCode Nerd Font"
 #Violet Dark
 window-decoration = false
-background-opacity = 0.8
+# background-opacity = 0.8
+# background-image = "/home/sd/personal/dev/images/terminal-background.png"
 # background = 000000
 
 #shell-integration-features = no-cursor,no-sudo,no-title

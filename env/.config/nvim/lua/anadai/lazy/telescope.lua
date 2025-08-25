@@ -72,8 +72,8 @@ return {
                                     .actions.move,
                                 ["y"] = require("telescope").extensions.file_browser
                                     .actions.copy,
-                                ["p"] = require("telescope").extensions.file_browser
-                                    .actions.paste,
+                                -- ["p"] = require("telescope").extensions.file_browser
+                                --     .actions.paste,
                                 ["r"] = require("telescope").extensions.file_browser
                                     .actions.rename,
                             },
