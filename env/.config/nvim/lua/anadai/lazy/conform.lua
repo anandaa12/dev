@@ -35,7 +35,7 @@ return {
       },
     },
     -- Set up format-on-save
-    format_on_save = { timeout_ms = 500 },
+    -- format_on_save = { timeout_ms = 500 },
     -- Set default options
     default_format_opts = {
       lsp_format = "fallback",
