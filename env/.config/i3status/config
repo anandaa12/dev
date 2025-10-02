@@ -12,11 +12,11 @@ general {
         interval = 5
 }
 
-order += "wireless _first_"
+# order += "wireless _first_"
 order += "ethernet _first_"
 order += "disk _first_"
 order += "memory"
-order += "battery all"
+# order += "battery all"
 order += "volume master"
 order += "tztime local"
 
@@ -29,8 +29,8 @@ tztime local {
        timezone = "Asia/Ulaanbaatar"
 }
 
-disk "/" {
-        format = "%mountpoint %used/%total %percentage_used"
+disk _first_ {
+    format = "%mountpoint %used/%total %percentage_used"
 }
 
 
@@ -67,4 +67,5 @@ memory {
     threshold_degraded = "1G"
     format_degraded = "RAM: low"
 }
+
 
