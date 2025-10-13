@@ -4,12 +4,12 @@ return {
     "windwp/nvim-ts-autotag",
     opts = {},
   },
-  -- comments
-  {
-    "numToStr/Comment.nvim",
-    opts = {},
-    lazy = false,
-  },
+  -- -- comments
+  -- {
+  --   "numToStr/Comment.nvim",
+  --   opts = {},
+  --   lazy = false,
+  -- },
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
