@@ -12,10 +12,19 @@ return {
     },
     settings = {
         basedpyright = {
+            python = {
+                pythonPath = "venv/bin/python",
+            },
             analysis = {
+                typeCheckingMode = "strict", -- or "strict", "off", basic
                 autoSearchPaths = true,
-                diagnosticMode = "openFilesOnly",
+                diagnosticMode = "openFilesOnly", -- or workspace
                 useLibraryCodeForTypes = true,
+            },
+            inlayHints = {
+                variableTypes = true,
+                callArgumentNames = true,
+                functionReturnTypes = false,
             },
         },
     },
