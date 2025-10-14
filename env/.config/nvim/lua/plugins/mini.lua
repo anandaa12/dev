@@ -2,15 +2,7 @@ return {
     "nvim-mini/mini.nvim",
     version = "*",
     config = function()
-        require("mini.icons").setup({})
-
-        -- Better Around/Inside textobjects
-        --
-        -- Examples:
-        --  - va)  - [V]isually select [A]round [)]paren
-        --  - yinq - [Y]ank [I]nside [N]ext [']quote
-        --  - ci'  - [C]hange [I]nside [']quote
-        require("mini.ai").setup({ n_lines = 500 })
+        require("mini.icons").setup()
 
         require("mini.hipatterns").setup()
         require("mini.trailspace").setup()
@@ -23,12 +15,47 @@ return {
             priority = 2,
         })
 
-        require("mini.pick").setup({
-            config = function(ctx)
-                local builtin = ctx.builtin
-                vim.keymap.set("n", "<leader>jj", builtin.find, {})
-            end,
-        })
+        -- require("mini.pick").setup({
+        --     -- config = function(ctx)
+        --     --     local builtin = ctx.builtin
+        --     -- end,
+        --     mappings = {
+        --         -- caret_left = "<Left>",
+        --         -- caret_right = "<Right>",
+        --
+        --         choose = "<CR>",
+        --         choose_in_split = "<C-s>",
+        --         choose_in_tabpage = "<C-t>",
+        --         choose_in_vsplit = "<C-v>",
+        --         -- choose_marked = "<M-CR>",
+        --         -- delete_char = "<BS>",
+        --         -- delete_char_ri = "<Del>",
+        --         -- delete_left = "<C-u>",
+        --         -- delete_word = "<C-w>",
+        --         mark = "<C-x>",
+        --         mark_all = "<C-a>",
+        --
+        --         move_down = "<C-n>",
+        --         move_start = "<C-g>",
+        --         move_up = "<C-p>",
+        --
+        --         -- paste = "<C-r>",
+        --
+        --         -- refine = "<C-Space>",
+        --         -- refine_marked = "<M-Space>",
+        --
+        --         scroll_down = "<C-f>",
+        --         scroll_left = "<C-h>",
+        --         scroll_right = "<C-l>",
+        --         scroll_up = "<C-b>",
+        --
+        --         -- stop = "<Esc>",
+        --
+        --         toggle_info = "<S-Tab>",
+        --         toggle_preview = "<Tab>",
+        --     },
+        -- })
+        -- vim.keymap.set("n", "<leader>fb", "<cmd>:Pick files<CR>", {})
 
         require("mini.git").setup()
         require("mini.diff").setup()
@@ -65,5 +92,28 @@ return {
         require("mini.surround").setup({})
 
         require("mini.pairs").setup()
+
+        require("mini.move").setup({
+            mappings = {
+                -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
+                left = "<M-h>",
+                right = "<M-l>",
+                down = "<M-j>",
+                up = "<M-k>",
+
+                -- Move current line in Normal mode
+                line_left = "<M-h>",
+                line_right = "<M-l>",
+                line_down = "<M-j>",
+                line_up = "<M-k>",
+            },
+        })
+        -- Better Around/Inside textobjects
+        --
+        -- Examples:
+        --  - va)  - [V]isually select [A]round [)]paren
+        --  - yinq - [Y]ank [I]nside [N]ext [']quote
+        --  - ci'  - [C]hange [I]nside [']quote
+        require("mini.ai").setup({ n_lines = 500 })
     end,
 }

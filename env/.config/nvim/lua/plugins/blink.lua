@@ -1,11 +1,16 @@
 return {
     "saghen/blink.cmp",
+    -- optional: provides snippets for the snippet source
     dependencies = { "rafamadriz/friendly-snippets" },
 
+    -- use a release tag to download pre-built binaries
     version = "1.*",
     opts = {
         keymap = {
-            preset = "default",
+            preset = "none",
+            ["<C-p>"] = { "select_prev", "fallback" },
+            ["<C-n>"] = { "select_next", "fallback" },
+            ["<C-y>"] = { "accept", "fallback" },
         },
         appearance = {
             -- sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -31,14 +36,13 @@ return {
                 auto_brackets = { enabled = true },
             },
             -- Don't select by default, auto insert on selection
-            list = { selection = { preselect = false, auto_insert = false } },
+            list = { selection = { preselect = true, auto_insert = false } },
 
             menu = {
                 -- Whether to automatically show the window when new completion items are available
                 auto_show = true,
                 -- Delay before showing the completion menu
                 auto_show_delay_ms = 0,
-
                 -- nvim-cmp style menu
                 draw = {
                     columns = {
