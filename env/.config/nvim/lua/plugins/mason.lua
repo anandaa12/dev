@@ -12,7 +12,7 @@ return {
       ensure_installed = {
         -- LSP servers (matching your vim.lsp.enable() config)
         "lua-language-server", -- Lua LSP
-        "gopls", -- Go LSP
+        -- "gopls", -- Go LSP
         "typescript-language-server", -- TypeScript LSP
         "tailwindcss-language-server", -- Tailwind CSS LSP
         "html-lsp", -- HTML LSP
@@ -20,7 +20,7 @@ return {
 
         -- Formatters (for conform.nvim and general use)
         "stylua",
-        "goimports",
+        -- "goimports",
         -- Note: gofmt comes with Go installation, not managed by Mason
         "prettier",
         "black",

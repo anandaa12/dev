@@ -6,37 +6,15 @@
 -- This actually just enables the lsp servers.
 -- The configuration is found in the lsp folder inside the nvim config folder,
 -- so in ~.config/lsp/lua_ls.lua for lua_ls, for example.
-vim.lsp.enable({ "lua_ls", "ts_ls", "gopls", "tailwindcss", "html-ls", "css-ls" })
+vim.lsp.enable({ "lua_ls", "ts_ls", "gopls", "tailwindcss", "html-ls", "css-ls", "basedpyright-langserver" })
 
-vim.api.nvim_create_autocmd('LspAttach', {
+vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(ev)
         local client = vim.lsp.get_client_by_id(ev.data.client_id)
-        if client:supports_method('textDocument/completion') then
+        if client:supports_method("textDocument/completion") then
             vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
         end
     end,
-})
-vim.diagnostic.config({
-    virtual_text = true,
-    underline = true,
-    update_in_insert = false,
-    severity_sort = true,
-    float = {
-        border = "rounded",
-        source = true,
-    },
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = "󰅚 ",
-            [vim.diagnostic.severity.WARN] = "󰀪 ",
-            [vim.diagnostic.severity.INFO] = "󰋽 ",
-            [vim.diagnostic.severity.HINT] = "󰌶 ",
-        },
-        numhl = {
-            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-            [vim.diagnostic.severity.WARN] = "WarningMsg",
-        },
-    },
 })
 
 local function restart_lsp(bufnr)
@@ -48,9 +26,9 @@ local function restart_lsp(bufnr)
     end
 
     vim.defer_fn(function()
-        vim.cmd('edit')
+        vim.cmd("edit")
     end, 100)
 end
-vim.api.nvim_create_user_command('LspRestart', function()
+vim.api.nvim_create_user_command("LspRestart", function()
     restart_lsp()
 end, {})
