@@ -11,14 +11,15 @@ return {
         ".git",
     },
     settings = {
+        python = {
+            pythonPath = "venv/bin/python",
+            venvPath = "venv/bin/python",
+        },
         basedpyright = {
-            python = {
-                pythonPath = "venv/bin/python",
-            },
             analysis = {
-                typeCheckingMode = "strict", -- or "strict", "off", basic
+                typeCheckingMode = "basic", -- or "strict", "off", basic
                 autoSearchPaths = true,
-                diagnosticMode = "openFilesOnly", -- or workspace
+                diagnosticMode = "workspace", -- or workspace, openFilesOnly
                 useLibraryCodeForTypes = true,
             },
             inlayHints = {

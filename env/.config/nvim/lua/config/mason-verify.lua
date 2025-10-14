@@ -24,19 +24,33 @@ function M.verify_tools()
     print("")
     local mason_tools = {
         -- LSP Servers (Mason-managed)
-        "gopls", "lua-language-server", "rust-analyzer",
-        "typescript-language-server", "intelephense", "zls",
+        "gopls",
+        "lua-language-server",
+        "rust-analyzer",
+        "typescript-language-server",
+        "intelephense",
+        "basedpyright",
 
         -- Formatters (Mason-managed)
-        "stylua", "prettier", "goimports", "black", "isort", "shfmt", "pint",
+        "stylua",
+        "prettier",
+        "goimports",
+        "black",
+        "isort",
+        "shfmt",
+        "pint",
 
         -- Linters (Mason-managed)
-        "golangci-lint", "eslint_d", "luacheck", "shellcheck"
+        "golangci-lint",
+        "eslint_d",
+        "flake8",
+        "luacheck",
+        "shellcheck",
     }
 
     local system_tools = {
         -- System tools (not managed by Mason)
-        "gofmt",   -- Comes with Go installation
+        "gofmt", -- Comes with Go installation
         "rustfmt", -- Comes with Rust installation
     }
 
@@ -122,7 +136,8 @@ function M.fix_path()
 end
 
 -- Create commands
-vim.api.nvim_create_user_command('MasonVerify', M.verify_tools, { desc = "Verify Mason tool management" })
-vim.api.nvim_create_user_command('MasonFixPath', M.fix_path, { desc = "Fix Mason PATH manually" })
+vim.api.nvim_create_user_command("MasonVerify", M.verify_tools, { desc = "Verify Mason tool management" })
+vim.api.nvim_create_user_command("MasonFixPath", M.fix_path, { desc = "Fix Mason PATH manually" })
 
 return M
+
