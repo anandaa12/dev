@@ -4,7 +4,13 @@ return {
     config = function()
         require("mini.icons").setup()
 
-        require("mini.hipatterns").setup()
+        local hipatterns = require("mini.hipatterns")
+        hipatterns.setup({
+            highlighters = {
+                -- Highlight hex color strings (`#rrggbb`) using that color
+                hex_color = hipatterns.gen_highlighter.hex_color(),
+            },
+        })
         require("mini.trailspace").setup()
         require("mini.indentscope").setup({
             draw = {
