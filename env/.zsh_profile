@@ -1,8 +1,8 @@
 
 export EDITOR="nvim"
 export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_CACHE_HOME=$HOME/.cache
+#export XDG_DATA_HOME=$HOME/.local/share
+#export XDG_CACHE_HOME=$HOME/.cache
 
 export TERM=xterm-256color
 
@@ -30,9 +30,12 @@ addToPath() {
 
 export PATH="$HOME/.local/bin:$PATH"
 
+
+
 addToPathFront $HOME/.local/scripts
 #addToPathFront $HOME/.local/zig true
 addToPath $HOME/.local/go/bin
+#export PATH="$HOME/.local/go/bin"
 
 # export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
 # export PATH=$JAVA_HOME/bin:$PATH

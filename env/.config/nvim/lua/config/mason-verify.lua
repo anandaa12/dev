@@ -21,7 +21,6 @@ function M.verify_tools()
         local marker = (string.find(path_entries[i], "mason") and "🔧" or "  ")
         print(string.format("%s %d: %s", marker, i, path_entries[i]))
     end
-    print("")
     local mason_tools = {
         -- LSP Servers (Mason-managed)
         "gopls",
