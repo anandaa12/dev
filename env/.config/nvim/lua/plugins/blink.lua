@@ -33,7 +33,7 @@ return {
             -- Disable auto brackets
             -- NOTE: some LSPs may add auto brackets themselves anyway
             accept = {
-                auto_brackets = { enabled = true },
+                auto_brackets = { enabled = false },
             },
             -- Don't select by default, auto insert on selection
             list = { selection = { preselect = true, auto_insert = false } },
