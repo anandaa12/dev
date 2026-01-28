@@ -10,7 +10,7 @@ return {
         "javascript.jsx",
         "typescript",
         "typescriptreact",
-        "typescript.tsx"
+        "typescript.tsx",
     },
     root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
     settings = {
@@ -20,7 +20,7 @@ return {
                 useSyntaxServer = false,
             },
             inlayHints = {
-                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHints = "all",
                 includeInlayParameterNameHintsWhenArgumentMatchesName = true,
                 includeInlayFunctionParameterTypeHints = true,
                 includeInlayVariableTypeHints = true,
@@ -42,7 +42,6 @@ return {
     -- ),
 
     init_options = {
-        hostInfo = "neovim"
-    }
-
+        hostInfo = "neovim",
+    },
 }
