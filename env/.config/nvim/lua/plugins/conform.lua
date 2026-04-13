@@ -1,26 +1,29 @@
 return {
-    'stevearc/conform.nvim',
+    "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     -- This will provide type hinting with LuaLS
     ---@module "conform"
     ---@type conform.setupOpts
-    keys = {
-
-    },
+    keys = {},
     opts = {
         formatters_by_ft = {
             -- Go
-            go = { "goimports", "gofmt" },
+            go = {
+                -- "goimports",
+                "gofmt",
+                "gofumpt",
+                "golines",
+            },
 
             -- Lua
             lua = { "stylua" },
 
             -- Web technologies
-            javascript = { "prettier" },
-            typescript = { "prettier" },
-            javascriptreact = { "prettier" },
-            typescriptreact = { "prettier" },
+            javascript = { "eslint_d", "prettier" },
+            typescript = { "eslint_d", "prettier" },
+            javascriptreact = { "eslint_d", "prettier" },
+            typescriptreact = { "eslint_d", "prettier" },
             json = { "prettier" },
             jsonc = { "prettier" },
             yaml = { "prettier" },
@@ -45,7 +48,13 @@ return {
             -- Additional file types (uncomment as needed)
             -- markdown = { "markdownlint" },
             -- yaml = { "yamllint" },
-            -- toml = { "taplo" },
+            toml = { "taplo" },
+        },
+        -- Tell eslint_d to use the project's eslint.config.js
+        formatters = {
+            eslint_d = {
+                require_cwd = true, -- only run if project root has eslint config
+            },
         },
         default_format_opts = {
             lsp_format = "fallback",
@@ -67,7 +76,7 @@ return {
 
         vim.keymap.set({ "n", "v" }, "<A-f>", "<cmd>Format<cr>", {
             desc = "Format code (Conform)",
-            silent = true
+            silent = true,
         })
-    end
+    end,
 }

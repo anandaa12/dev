@@ -1,4 +1,3 @@
-local blink = require("blink.cmp")
 return {
     cmd = { 'gopls' },
     filetypes = { 'go', 'gomod', 'gowork', 'gotmpl', 'gosum' },

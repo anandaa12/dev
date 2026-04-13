@@ -26,6 +26,7 @@ vim.diagnostic.config({
 -- set to `true` to follow the main branch
 -- you need to have a working rust toolchain to build the plugin
 -- in this case.
+vim.opt.colorcolumn = "100" ---- Show a vertical line at column 100
 
 vim.opt.incsearch = true -- make search act like search in modern browsers
 vim.opt.backup = false -- creates a backup file
