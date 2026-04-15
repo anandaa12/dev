@@ -20,10 +20,10 @@ return {
             lua = { "stylua" },
 
             -- Web technologies
-            javascript = { "eslint_d", "prettier" },
-            typescript = { "eslint_d", "prettier" },
-            javascriptreact = { "eslint_d", "prettier" },
-            typescriptreact = { "eslint_d", "prettier" },
+            javascript = { "eslint", "prettier" },
+            typescript = { "eslint", "prettier" },
+            javascriptreact = { "eslint", "prettier" },
+            typescriptreact = { "eslint", "prettier" },
             json = { "prettier" },
             jsonc = { "prettier" },
             yaml = { "prettier" },
@@ -52,8 +52,16 @@ return {
         },
         -- Tell eslint_d to use the project's eslint.config.js
         formatters = {
-            eslint_d = {
-                require_cwd = true, -- only run if project root has eslint config
+            eslint = {
+                command = function(ctx)
+                    local root = vim.fs.dirname(vim.fs.find("node_modules", { upward = true, path = ctx.filename })[1])
+                    return root .. "/node_modules/.bin/eslint"
+                end,
+                args = {
+                    "--fix",
+                    "$FILENAME",
+                },
+                stdin = false,
             },
         },
         default_format_opts = {
