@@ -1,5 +1,12 @@
-return {
-    "folke/which-key.nvim",
+vim.pack.add({
+    "https://github.com/folke/which-key.nvim",
+})
+
+local wk = require("which-key")
+wk.setup({
+    preset = "helix",
+})
+wk.add({
     event = "VeryLazy",
     opts = {
         preset = "classic",
@@ -51,4 +58,4 @@ return {
             desc = "Buffer Local Keymaps (which-key)",
         },
     },
-}
+})

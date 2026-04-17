@@ -1,17 +1,13 @@
-return {
-    -- Autotags
+vim.pack.add({
     {
-        "windwp/nvim-ts-autotag",
-        opts = {},
+        src = "https://github.com/windwp/nvim-ts-autotag",
     },
     {
-        "j-hui/fidget.nvim",
-        opts = {},
+        src = "https://github.com/j-hui/fidget.nvim",
     },
     {
-        "supermaven-inc/supermaven-nvim",
-        config = function()
-            require("supermaven-nvim").setup({})
-        end,
+        src = "https://github.com/supermaven-inc/supermaven-nvim",
     },
-}
+})
+
+require("supermaven-nvim").setup({})

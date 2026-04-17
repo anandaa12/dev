@@ -1,78 +1,23 @@
-return {
-    "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
-    -- This will provide type hinting with LuaLS
-    ---@module "conform"
-    ---@type conform.setupOpts
-    keys = {},
-    opts = {
-        formatters_by_ft = {
-            -- Go
-            go = {
-                -- "goimports",
-                "gofmt",
-                "gofumpt",
-                "golines",
+vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
+require("conform").setup({
+    formatters = {
+        eslint = {
+            command = function(ctx)
+                local root = vim.fs.dirname(vim.fs.find("node_modules", { upward = true, path = ctx.filename })[1])
+                return root .. "/node_modules/.bin/eslint"
+            end,
+            args = {
+                "--fix",
+                "$FILENAME",
             },
-
-            -- Lua
-            lua = { "stylua" },
-
-            -- Web technologies
-            javascript = { "eslint", "prettier" },
-            typescript = { "eslint", "prettier" },
-            javascriptreact = { "eslint", "prettier" },
-            typescriptreact = { "eslint", "prettier" },
-            json = { "prettier" },
-            jsonc = { "prettier" },
-            yaml = { "prettier" },
-            markdown = { "prettier" },
-            html = { "prettier" },
-            css = { "prettier" },
-            scss = { "prettier" },
-
-            -- Python
-            python = { "isort", "black" },
-
-            -- PHP/Laravel
-            php = { "pint" },
-
-            -- Shell
-            sh = { "shfmt" },
-            bash = { "shfmt" },
-
-            -- Other (system tools)
-            rust = { "rustfmt" }, -- comes with Rust installation
-
-            -- Additional file types (uncomment as needed)
-            -- markdown = { "markdownlint" },
-            -- yaml = { "yamllint" },
-            toml = { "taplo" },
+            stdin = false,
         },
-        -- Tell eslint_d to use the project's eslint.config.js
-        formatters = {
-            eslint = {
-                command = function(ctx)
-                    local root = vim.fs.dirname(vim.fs.find("node_modules", { upward = true, path = ctx.filename })[1])
-                    return root .. "/node_modules/.bin/eslint"
-                end,
-                args = {
-                    "--fix",
-                    "$FILENAME",
-                },
-                stdin = false,
-            },
-        },
-        default_format_opts = {
-            lsp_format = "fallback",
-        },
-        -- format_on_save = {
-        --     timeout_ms = 1000,
-        --     lsp_format = "fallback",
-        -- },
     },
-
+    -- format_on_save = {
+    --     timeout_ms = 1000,
+    --     lsp_format = "fallback",
+    -- },
+    default_format_opts = { lsp_format = "fallback" },
     init = function()
         vim.api.nvim_create_user_command("Format", function(args)
             require("conform").format({ async = true }, function(err, did_edit)
@@ -87,4 +32,4 @@ return {
             silent = true,
         })
     end,
-}
+})

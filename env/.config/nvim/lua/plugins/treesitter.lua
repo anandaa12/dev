@@ -1,116 +1,178 @@
-return {
+vim.pack.add({
     {
-        "nvim-treesitter/nvim-treesitter",
-        version = false,
-        build = ":TSUpdate",
-        event = { "BufReadPost", "BufNewFile" },
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-        },
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                sync_install = false,
-                modules = {},
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-                indent = { enable = true },
-                auto_install = false,
-                ensure_installed = {
-                    "bash",
-                    "c",
-                    "html",
-                    "javascript",
-                    "json",
-                    "lua",
-                    "luadoc",
-                    "luap",
-                    "markdown",
-                    "markdown_inline",
-                    "python",
-                    "query",
-                    "regex",
-                    "tsx",
-                    "typescript",
-                    "prisma",
-                    "vue",
-                    "vim",
-                    "vimdoc",
-                    "yaml",
-                    "rust",
-                    "go",
-                    "gomod",
-                    "gowork",
-                    "gosum",
-                    "terraform",
-                    "proto",
-                    "zig",
-                    "php",
-                    "blade",
-                },
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "<leader>vv",
-                        node_incremental = "+",
-                        scope_incremental = false,
-                        node_decremental = "_",
-                    },
-                },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        lookahead = true,
-
-                        keymaps = {
-                            -- You can use the capture groups defined in textobjects.scm
-                            ["af"] = { query = "@function.outer", desc = "around a function" },
-                            ["if"] = { query = "@function.inner", desc = "inner part of a function" },
-                            ["ac"] = { query = "@class.outer", desc = "around a class" },
-                            ["ic"] = { query = "@class.inner", desc = "inner part of a class" },
-                            ["ai"] = { query = "@conditional.outer", desc = "around an if statement" },
-                            ["ii"] = { query = "@conditional.inner", desc = "inner part of an if statement" },
-                            ["al"] = { query = "@loop.outer", desc = "around a loop" },
-                            ["il"] = { query = "@loop.inner", desc = "inner part of a loop" },
-                            ["ap"] = { query = "@parameter.outer", desc = "around parameter" },
-                            ["ip"] = { query = "@parameter.inner", desc = "inside a parameter" },
-                        },
-                        selection_modes = {
-                            ["@parameter.outer"] = "v", -- charwise
-                            ["@parameter.inner"] = "v", -- charwise
-                            ["@function.outer"] = "v", -- charwise
-                            ["@conditional.outer"] = "V", -- linewise
-                            ["@loop.outer"] = "V", -- linewise
-                            ["@class.outer"] = "<c-v>", -- blockwise
-                        },
-                        include_surrounding_whitespace = false,
-                    },
-                    move = {
-                        enable = true,
-                        set_jumps = true, -- whether to set jumps in the jumplist
-                        goto_previous_start = {
-                            ["[f"] = { query = "@function.outer", desc = "Previous function" },
-                            ["[c"] = { query = "@class.outer", desc = "Previous class" },
-                            ["[p"] = { query = "@parameter.inner", desc = "Previous parameter" },
-                        },
-                        goto_next_start = {
-                            ["]f"] = { query = "@function.outer", desc = "Next function" },
-                            ["]c"] = { query = "@class.outer", desc = "Next class" },
-                            ["]p"] = { query = "@parameter.inner", desc = "Next parameter" },
-                        },
-                    },
-                    swap = {
-                        enable = true,
-                        swap_next = {
-                            ["<leader>a"] = "@parameter.inner",
-                        },
-                        swap_previous = {
-                            ["<leader>A"] = "@parameter.inner",
-                        },
-                    },
-                },
-            })
-        end,
+        src = "https://github.com/nvim-treesitter/nvim-treesitter",
+        version = "main",
     },
+    {
+        src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+        version = "main",
+    },
+})
+
+require("nvim-treesitter").setup({})
+require("nvim-treesitter").install({
+    "bash",
+    "blade",
+    "c",
+    "comment",
+    "css",
+    "diff",
+    "dockerfile",
+    "fish",
+    "gitcommit",
+    "gitignore",
+    "go",
+    "gomod",
+    "gosum",
+    "gowork",
+    "html",
+    "ini",
+    "javascript",
+    "jsdoc",
+    "json",
+    "lua",
+    "luadoc",
+    "luap",
+    "make",
+    "markdown",
+    "markdown_inline",
+    "nginx",
+    "nix",
+    "proto",
+    "python",
+    "query",
+    "regex",
+    "rust",
+    "scss",
+    "sql",
+    "terraform",
+    "toml",
+    "tsx",
+    "typescript",
+    "vim",
+    "vimdoc",
+    "xml",
+    "yaml",
+    "zig",
+})
+
+require("nvim-treesitter-textobjects").setup({
+    select = {
+        -- enable = true,
+        -- lookahead = true,
+        -- selection_modes = {
+        --     ["@parameter.outer"] = "v", -- charwise
+        --     ["@function.outer"] = "V", -- linewise
+        --     ["@class.outer"] = "<c-v>", -- blockwise
+        -- },
+        -- include_surrounding_whitespace = false,
+    },
+    move = {
+        enable = true,
+        set_jumps = true,
+    },
+})
+
+-- -- SELECT keymaps
+-- local sel = require("nvim-treesitter-textobjects.select")
+-- for _, map in ipairs({
+--     { { "x", "o" }, "af", "@function.outer" },
+--     { { "x", "o" }, "if", "@function.inner" },
+--     { { "x", "o" }, "ac", "@class.outer" },
+--     { { "x", "o" }, "ic", "@class.inner" },
+--     { { "x", "o" }, "aa", "@parameter.outer" },
+--     { { "x", "o" }, "ia", "@parameter.inner" },
+--     { { "x", "o" }, "ad", "@comment.outer" },
+--     { { "x", "o" }, "as", "@statement.outer" },
+-- }) do
+--     vim.keymap.set(map[1], map[2], function()
+--         sel.select_textobject(map[3], "textobjects")
+--     end, { desc = "Select " .. map[3] })
+-- end
+
+-- MOVE keymaps
+-- local mv = require("nvim-treesitter-textobjects.move")
+-- for _, map in ipairs({
+--     { { "n", "x", "o" }, "]m", mv.goto_next_start, "@function.outer" },
+--     { { "n", "x", "o" }, "[m", mv.goto_previous_start, "@function.outer" },
+--     { { "n", "x", "o" }, "]]", mv.goto_next_start, "@class.outer" },
+--     { { "n", "x", "o" }, "[[", mv.goto_previous_start, "@class.outer" },
+--     { { "n", "x", "o" }, "]M", mv.goto_next_end, "@function.outer" },
+--     { { "n", "x", "o" }, "[M", mv.goto_previous_end, "@function.outer" },
+--     { { "n", "x", "o" }, "]o", mv.goto_next_start, { "@loop.inner", "@loop.outer" } },
+--     { { "n", "x", "o" }, "[o", mv.goto_previous_start, { "@loop.inner", "@loop.outer" } },
+-- }) do
+--     local modes, lhs, fn, query = map[1], map[2], map[3], map[4]
+--     -- build a human-readable desc
+--     local qstr = (type(query) == "table") and table.concat(query, ",") or query
+--     vim.keymap.set(modes, lhs, function()
+--         fn(query, "textobjects")
+--     end, { desc = "Move to " .. qstr })
+-- end
+
+vim.api.nvim_create_autocmd("PackChanged", {
+    desc = "Handle nvim-treesitter updates",
+    group = vim.api.nvim_create_augroup("nvim-treesitter-pack-changed-update-handler", { clear = true }),
+    callback = function(event)
+        if event.data.kind == "update" then
+            local ok = pcall(vim.cmd, "TSUpdate")
+            if ok then
+                vim.notify("TSUpdate completed successfully!", vim.log.levels.INFO)
+            else
+                vim.notify("TSUpdate command not available yet, skipping", vim.log.levels.WARN)
+            end
+        end
+    end,
+})
+
+local SKIP_FT = {
+    [""] = true,
+    qf = true,
+    help = true,
+    man = true,
+    noice = true,
+    notify = true,
+    snacks_notif = true,
+    snacks_notif_history = true,
+    snacks_picker_list = true,
+    snacks_picker_input = true,
+    snacks_input = true,
+    snacks_terminal = true,
+    dapui_scopes = true,
+    dapui_breakpoints = true,
+    dapui_stacks = true,
+    dapui_watches = true,
+    dapui_console = true,
+    dap_repl = true,
+    gitcommit = true,
+    gitrebase = true,
+    lazy = true,
+    lspinfo = true,
+    checkhealth = true,
+    startuptime = true,
+    TelescopePrompt = true,
+    TelescopeResults = true,
+    spectre_panel = true,
+    ["grug-far"] = true,
+    trouble = true,
 }
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "*" },
+    callback = function()
+        local ft = vim.bo.filetype
+        if SKIP_FT[ft] then
+            return
+        end
+
+        local ok = pcall(vim.treesitter.start)
+        if not ok then
+            return
+        end
+        -- Only set expr folds when treesitter successfully started
+        -- vim.wo[0].foldmethod = "expr"
+        -- vim.wo[0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+    end,
+})
+
+vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

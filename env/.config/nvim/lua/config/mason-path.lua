@@ -1,3 +1,4 @@
+
 -- Early Mason PATH initialization
 -- This ensures Mason's bin directory is always first in PATH
 --

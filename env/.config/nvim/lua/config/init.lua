@@ -1,0 +1,10 @@
+require("config.set")
+require("config.keymaps")
+require("config.autocmds")
+require("config.set")
+require("config.mason-path")
+require("config.mason-verify")
+require("config.lsp")
+
+require("config.ui2")
+-- require("config.packui")
