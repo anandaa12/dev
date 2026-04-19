@@ -33,7 +33,7 @@ return {
                 "golangci-lint",
                 "eslint_d",
                 "flake8", -- Python linter
-                "luacheck", -- Lua linting
+                -- "luacheck", -- Lua linting
 
                 -- Additional useful tools
                 -- "delve",      -- Go debugger
