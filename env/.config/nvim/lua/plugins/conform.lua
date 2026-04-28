@@ -44,6 +44,7 @@ return {
 
             -- Other (system tools)
             rust = { "rustfmt" }, -- comes with Rust installation
+            sql = { "sql_formatter" },
 
             -- Additional file types (uncomment as needed)
             -- markdown = { "markdownlint" },
@@ -54,13 +55,24 @@ return {
         formatters = {
             eslint = {
                 command = function(ctx)
-                    local root = vim.fs.dirname(vim.fs.find("node_modules", { upward = true, path = ctx.filename })[1])
+                    local found = vim.fs.find("node_modules", {
+                        upward = true,
+                        path = ctx.filename,
+                    })[1]
+
+                    if not found then
+                        return "eslint"
+                    end
+
+                    local root = vim.fs.dirname(found)
                     return root .. "/node_modules/.bin/eslint"
                 end,
+
                 args = {
                     "--fix",
                     "$FILENAME",
                 },
+
                 stdin = false,
             },
         },

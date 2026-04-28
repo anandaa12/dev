@@ -44,6 +44,8 @@ return {
                 "proto",
                 "zig",
                 "php",
+                "make",
+                "sql",
                 "blade",
             })
             vim.api.nvim_create_autocmd("FileType", {

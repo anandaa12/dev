@@ -1,4 +1,5 @@
 vim.cmd("syntax off")
+vim.loader.enable()
 
 -- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
