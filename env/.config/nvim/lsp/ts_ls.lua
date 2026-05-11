@@ -18,16 +18,16 @@ return {
             tsserver = {
                 useSyntaxServer = false,
             },
-            inlayHints = {
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
-            },
+            -- inlayHints = {
+            --     includeInlayParameterNameHints = "all",
+            --     includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+            --     includeInlayFunctionParameterTypeHints = true,
+            --     includeInlayVariableTypeHints = true,
+            --     includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+            --     includeInlayPropertyDeclarationTypeHints = true,
+            --     includeInlayFunctionLikeReturnTypeHints = true,
+            --     includeInlayEnumMemberValueHints = true,
+            -- },
         },
         javascript = {
             -- Remove tsdk setting to allow auto-detection

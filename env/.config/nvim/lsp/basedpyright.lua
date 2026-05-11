@@ -11,22 +11,22 @@ return {
         ".git",
     },
     settings = {
-        python = {
-            pythonPath = "venv/bin/python",
-            venvPath = "venv/bin/python",
-        },
         basedpyright = {
             analysis = {
-                typeCheckingMode = "basic", -- or "strict", "off", basic
-                autoSearchPaths = true,
-                diagnosticMode = "workspace", -- or workspace, openFilesOnly
-                useLibraryCodeForTypes = true,
+                typeCheckingMode = "basic",
+                autoSearchPaths = true, -- flip to true so it finds the venv
+                diagnosticMode = "workspace",
+                useLibraryCodeForTypes = true, -- needed to see venv packages
+                inlayHints = {
+                    variableTypes = false,
+                    functionReturnTypes = false,
+                    callArgumentNames = false,
+                },
             },
-            inlayHints = {
-                variableTypes = true,
-                callArgumentNames = true,
-                functionReturnTypes = false,
-            },
+        },
+        python = {
+            venvPath = ".", -- directory that CONTAINS the venv folder
+            venv = "venv", -- the venv folder name itself
         },
     },
 }

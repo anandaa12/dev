@@ -4,7 +4,7 @@ require("config.keymaps")
 require("config.autocmds")
 require("config.lsp")
 require("config.ui2")
-require("config.tabline")
+-- require("config.tabline")
 
 require("core.mason-path")
 

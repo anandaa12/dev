@@ -70,3 +70,31 @@ map("n", "<C-y>", ":%y+<CR>", opts)
 -- map("n", "<leader>bc", ":%bd|e#<CR>", { desc = "Buffers Clean" })
 -- Curront buffer delete
 -- map("n", "<leader>bd", ":bd<CR>", { desc = "Current buffer delete" })
+--
+--
+
+map("n", "<leader>bc", function()
+    local current = vim.api.nvim_get_current_buf()
+
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if buf ~= current and vim.api.nvim_buf_is_loaded(buf) then
+            vim.api.nvim_buf_delete(buf, { force = true })
+        end
+    end
+end, { desc = "Close other buffers" })
+
+-- vim.keymap.set("n", "<leader>bd", function()
+--     local buf = vim.api.nvim_get_current_buf()
+--
+--     -- get other listed buffers
+--     local alt = vim.fn.bufnr("#")
+--
+--     if alt ~= -1 and vim.api.nvim_buf_is_valid(alt) and vim.bo[alt].buflisted then
+--         vim.api.nvim_set_current_buf(alt)
+--     else
+--         -- fallback: open a real empty file buffer (NOT [No Name] state chaos)
+--         vim.cmd("enew")
+--     end
+--
+--     vim.cmd("bd " .. buf)
+-- end, { desc = "Delete buffer safely" })
