@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-
-sudo pacman -Syu         # Update your system
-sudo pacman -S --needed \
-  llvm lld clang git \
-  gtk4 libadwaita blueprint-compiler \
-  glib2 gettext
-sudo yay -S ghostty-git
