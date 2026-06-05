@@ -100,7 +100,7 @@ return {
                 waitgroup = false,
                 yield = false,
             },
-            usePlaceholders = true,
+            usePlaceholders = false,
             completeUnimported = true,
             staticcheck = true,
             directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },

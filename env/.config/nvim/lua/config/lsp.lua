@@ -20,6 +20,30 @@ local default_keymaps = {
 }
 
 local completion = vim.g.completion_mode or "blink" -- or 'native' for built-in completion
+
+-- Create a custom :LspRestart command
+-- This manually restarts LSP clients attached to the current buffer
+vim.api.nvim_create_user_command("LspRestart", function()
+    -- Get the current buffer number
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    -- Get all LSP clients attached to this buffer
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+
+    -- Stop each attached LSP client
+    -- This sends shutdown/exit requests to the language server
+    for _, client in ipairs(clients) do
+        client:stop()
+    end
+
+    -- Re-trigger LSP attach by reloading the buffer
+    -- `:edit` causes BufRead/BufEnter autocmds to fire again
+    -- which automatically re-attaches LSP based on your config
+    vim.defer_fn(function()
+        vim.cmd("edit")
+    end, 50)
+end, {})
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = augroup("lsp_attach"),
     callback = function(args)

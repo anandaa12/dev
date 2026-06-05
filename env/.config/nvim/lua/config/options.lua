@@ -13,6 +13,7 @@ opt.shiftwidth = 4 -- Indent width
 opt.softtabstop = 4 -- Soft tab stop
 opt.expandtab = true -- Use spaces instead of tabs
 opt.smartindent = true -- Smart auto-indenting
+
 opt.autoindent = true -- Copy indent from current line
 
 -- Search settings

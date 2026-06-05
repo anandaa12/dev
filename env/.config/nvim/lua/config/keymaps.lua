@@ -49,8 +49,21 @@ map(
     { desc = "Redraw / Clear hlsearch / Diff Update" }
 )
 
--- Better paste (doesn't replace clipboard with deleted text)
+-- Better visual paste behavior:
+-- When pasting over a selection, Neovim normally overwrites your clipboard
+-- with the deleted text. This mapping prevents that.
+--
+-- "_dP means:
+--   "_  -> delete into black hole register (does NOT affect clipboard)
+--   d   -> delete selected text
+--   P   -> paste before cursor position
+--
+-- Result:
+-- - Paste replaces selected text
+-- - Clipboard content is preserved
+-- - You can paste repeatedly without losing yanked text
 map("v", "p", '"_dP', opts)
+map("x", "p", '"_dP', opts)
 
 -- Copy whole file to clipboard
 map("n", "<C-y>", ":%y+<CR>", opts)
