@@ -46,6 +46,15 @@ return {
 
             require("telescope").load_extension("file_browser")
             require("telescope").setup({
+                defaults = {
+                    file_ignore_patterns = {
+                        "pnpm%-lock%.yaml",
+                        "package%-lock%.json",
+                        "yarn%.lock",
+                        "node_modules/",
+                        "%.git/"
+                    },
+                },
                 extensions = {
                     file_browser = {
                         --theme = "ivy",
