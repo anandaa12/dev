@@ -12,6 +12,7 @@ return {
             ensure_installed = {
                 -- LSP servers (matching your vim.lsp.enable() config)
                 "lua-language-server", -- Lua LSP
+                "rust_analyzer",
                 "gopls", -- Go LSP
                 "golangci-lint-langserver", -- Golang CI LSP
                 "typescript-language-server", -- TypeScript LSP
